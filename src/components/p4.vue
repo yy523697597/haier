@@ -42,7 +42,7 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
 
-    margin: 46% auto 0;
+    margin: 30% auto 0;
     // margin: 25% auto 0;
     animation: ls2 3s linear;
   }
