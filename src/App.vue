@@ -70,7 +70,7 @@ export default {
       p9show: false,
       p10show: false,
       popupShow: false,
-      location: "达州",
+      location: "宜宾",
       locations: [
         "江津",
         "万州",
