@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="user">
-          <img src="../assets/p12/tx.png" alt class="tx" />
+          <img :src="currentAvatar" alt class="tx" />
           <p class="user-name">{{name}}</p>
           <p class="count">
             我是第
@@ -52,7 +52,18 @@ export default {
   props: {
     name: String,
     location: String,
-    rankNum: [String, Number]
+    rankNum: [String, Number],
+    currentAvatar: String,
+    show: Boolean
+  },
+  watch: {
+    show(val) {
+      if (val) {
+        console.log(234);
+
+        this.buildNewImage();
+      }
+    }
   },
   data() {
     return {
@@ -96,11 +107,6 @@ export default {
         }, 1000);
       }
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.buildNewImage();
-    }, 1000);
   },
   components: {},
   created() {}

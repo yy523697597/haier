@@ -4,7 +4,7 @@
     <v-audio :source="music" :autoPla="true" v-show="show"></v-audio>
     <transition name="fade">
       <full-page ref="fullpage" :options="options" id="fullpage" v-show="show">
-        <!-- <page-one @jz="moveSectionDown" :show="show"></page-one>
+        <page-one @jz="moveSectionDown" :show="show"></page-one>
         <page-two :show="p2show" @home-click="moveTo"></page-two>
         <page-three @move-to="moveTo" :show="p3show"></page-three>
         <page-four @move-to="moveTo" :show="p4show"></page-four>
@@ -14,16 +14,22 @@
         <page-eight @move-to="moveTo" :show="p8show"></page-eight>
         <page-nine @move-to="moveTo" :show="p9show"></page-nine>
         <page-ten @move-to="moveTo" :show="p10show"></page-ten>
-        <page-eleven @move-to="moveTo"></page-eleven>-->
-        <!-- <page-twelve
+        <page-eleven @move-to="moveTo"></page-eleven>
+        <page-twelve
           :location="location"
           :currentAvatar="currentAvatar"
           :rankNum="rankNum"
           :name="name"
           @move-to="moveTo"
-        ></page-twelve>-->
+        ></page-twelve>
 
-        <page-threen :location="location" :rankNum="rankNum" :name="name"></page-threen>
+        <page-threen
+          :location="location"
+          :rankNum="rankNum"
+          :name="name"
+          :currentAvatar="currentAvatar"
+          :show="p13show"
+        ></page-threen>
       </full-page>
     </transition>
   </div>
@@ -44,7 +50,7 @@ import PageTen from "./components/p10";
 import PageEleven from "./components/p11";
 import PageTwelve from "./components/p12";
 import PageThreen from "./components/p13";
-
+import BaseAvatar from "./assets/p12/tx.png";
 import VAudio from "./components/v-audio.vue";
 import axios from "axios";
 import wx from "weixin-js-sdk";
@@ -69,8 +75,8 @@ export default {
       p8show: false,
       p9show: false,
       p10show: false,
-      popupShow: false,
-      location: "宜宾",
+      p13show: false,
+      location: "江津",
       locations: [
         "江津",
         "万州",
@@ -81,8 +87,7 @@ export default {
         "泸州",
         "宜宾"
       ],
-      currentAvatar:
-        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/tx.png",
+      currentAvatar: BaseAvatar,
       rankNum: 1,
       name: "小鱼儿"
     };
@@ -119,6 +124,9 @@ export default {
           break;
         case 9:
           this.p10show = true;
+          break;
+        case 12:
+          this.p13show = true;
           break;
       }
     },
