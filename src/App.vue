@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <loading @on-load-done="loadingDone" v-show="!show"></loading>
-    <v-audio :source="music" :autoPla="true" v-show="show"></v-audio>
+    <v-audio :source="music" :autoPlay="true" v-show="show"></v-audio>
     <transition name="fade">
       <full-page ref="fullpage" :options="options" id="fullpage" v-show="show">
-        <page-one @jz="moveSectionDown" :show="show"></page-one>
+        <!-- <page-one @jz="moveSectionDown" :show="show"></page-one>
         <page-two :show="p2show" @home-click="moveTo"></page-two>
-        <page-three @move-to="moveTo" :show="p3show"></page-three>
-        <page-four @move-to="moveTo" :show="p4show"></page-four>
-        <page-five @move-to="moveTo" :show="p5show"></page-five>
-        <page-six @move-to="moveTo" :show="p6show"></page-six>
-        <page-seven @move-to="moveTo" :show="p7show"></page-seven>
-        <page-eight @move-to="moveTo" :show="p8show"></page-eight>
-        <page-nine @move-to="moveTo" :show="p9show"></page-nine>
-        <page-ten @move-to="moveTo" :show="p10show"></page-ten>
-        <page-eleven @move-to="moveTo"></page-eleven>
+        <page-three @move-to="star" :show="p3show"></page-three>
+        <page-four @move-to="star" :show="p4show"></page-four>
+        <page-five @move-to="star" :show="p5show"></page-five>
+        <page-six @move-to="star" :show="p6show"></page-six>
+        <page-seven @move-to="star" :show="p7show"></page-seven>
+        <page-eight @move-to="star" :show="p8show"></page-eight>
+        <page-nine @move-to="star" :show="p9show"></page-nine>
+        <page-ten @move-to="star" :show="p10show"></page-ten>
+        <page-eleven @move-to="moveTo" :city="city"></page-eleven>-->
         <page-twelve
           :location="location"
           :currentAvatar="currentAvatar"
@@ -54,13 +54,14 @@ import BaseAvatar from "./assets/p12/tx.png";
 import VAudio from "./components/v-audio.vue";
 import axios from "axios";
 import wx from "weixin-js-sdk";
-
 import { log } from "util";
+
 export default {
   name: "app",
   data() {
     return {
-      music: "https://images.godruoyi.com/estbon/audio/a1.mp3",
+      music:
+        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/haier.mp3",
       options: {
         scrollingSpeed: 0,
         afterLoad: this.afterLoad
@@ -76,7 +77,7 @@ export default {
       p9show: false,
       p10show: false,
       p13show: false,
-      location: "江津",
+      location: "永川",
       locations: [
         "江津",
         "万州",
@@ -87,6 +88,17 @@ export default {
         "泸州",
         "宜宾"
       ],
+      lpy: [
+        "jiangjin",
+        "wanzhou",
+        "yongchuan",
+        "fengjie",
+        "dazhou",
+        "kaizhou",
+        "luzhou",
+        "yibin"
+      ],
+      city: null,
       currentAvatar: BaseAvatar,
       rankNum: 1,
       name: "小鱼儿"
@@ -134,9 +146,24 @@ export default {
       console.log(index);
       if (index > 2 && index < 11) {
         this.location = this.locations[index - 3];
-        console.log(this.location);
+        this.city = this.lpy[index - 3];
+      }
+      if (index == 12) {
+        this.initWxShare();
       }
       this.api.moveTo(index);
+    },
+    async star(index) {
+      console.log(this.city);
+      let res = await axios.post("https://projects.godruoyi.com/haier/star", {
+        city: this.city
+      });
+
+      res = res.data;
+      console.log("star", res);
+      if (res.code == 0) {
+        this.moveTo(index);
+      }
     },
     moveSectionDown() {
       this.api.moveSectionDown();
@@ -147,7 +174,7 @@ export default {
     // 获取微信分享配置
     async getJssdk() {
       let res = await axios.get(
-        `https://projects.godruoyi.com/estbon/jssdk?target_url=${encodeURIComponent(
+        `https://projects.godruoyi.com/haier/jssdk?target_url=${encodeURIComponent(
           window.location.href
         )}`
       );
@@ -163,26 +190,29 @@ export default {
           res.data
         );
         wx.config(configData);
-        this.initWxShare();
+        // this.initWxShare();
       } else {
         console.log(res.message);
       }
     },
     // 初始化微信配置
     initWxShare() {
+      const that = this;
       wx.ready(function() {
         wx.onMenuShareTimeline({
-          title: "蜜水表白，WFC帮你说爱", // 分享标题
+          title: "海尔消夏节，邀您点赞家的高光时刻", // 分享标题
           link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: "https://images.godruoyi.com/estbon/imgs/share-icon.jpg", // 分享图标
+          imgUrl:
+            "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/share.png", // 分享图标
           success: function() {}
           // 用户点击了分享后执行的回调函数
         });
         wx.onMenuShareAppMessage({
-          title: "蜜水表白，WFC帮你说爱", // 分享标题
-          desc: `用心配 才对味，让Ta听到你的真心~`, // 分享描述
+          title: `我的家在${that.location}，我是第${that.rankNum}个为ta点赞的人`, // 分享标题
+          desc: "海尔消夏节，邀您点赞家的高光时刻", // 分享描述
           link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: "https://images.godruoyi.com/estbon/imgs/share-icon.jpg", // 分享图标
+          imgUrl:
+            "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/share.png", // 分享图标
           type: "", // 分享类型,music、video或link，不填默认为link
           dataUrl: "", // 如果type是music或video，则要提供数据链接，默认为空
           success: function() {
@@ -195,15 +225,17 @@ export default {
     async getUserInfor() {
       try {
         let res = await axios.get(
-          "https://projects.godruoyi.com/estbon/userinfo"
+          "https://projects.godruoyi.com/haier/userinfo"
         );
         res = res.data;
-        console.log(res);
+        console.log("info", res);
         if (res.code == 0) {
           if (res.data._avatar) {
             this.currentAvatar = "data:image/png;base64," + res.data._avatar;
           }
-          this.rankNum = res.data.total || "0";
+          if (res.data.nickname) {
+            this.name = res.data.nickname;
+          }
         } else {
           console.log(res.message);
         }
@@ -211,6 +243,10 @@ export default {
         console.log(err);
       }
     }
+  },
+  created() {
+    this.getJssdk();
+    this.getUserInfor();
   },
   computed: {
     fullpage() {

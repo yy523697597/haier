@@ -17,8 +17,13 @@
   </transition>
 </template>
 <script type="text/ecmascript-6">
+import axios from "axios";
+import { log } from "util";
+
 export default {
-  props: {},
+  props: {
+    city: String
+  },
   data() {
     return {
       name: null
@@ -34,11 +39,26 @@ export default {
         this.$refs.page.scrollIntoView();
       }, 100);
     },
-    submit() {
+    async submit() {
       if (this.name) {
         let name = this.name.trim();
         if (name.length > 0) {
-          this.$emit("move-to", 12);
+          ``;
+          let res = await axios.post(
+            "https://projects.godruoyi.com/haier/submit",
+            {
+              city: this.city,
+              username: this.name
+            }
+          );
+
+          res = res.data;
+          console.log("submit", res);
+          if (res.code == 0) {
+            this.$parent.$parent.rankNum = res.data.total;
+            this.$parent.$parent.name = this.name;
+            this.$emit("move-to", 12);
+          }
         } else {
           this.$toast.center("请输入您的名字~");
         }

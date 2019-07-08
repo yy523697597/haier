@@ -6,7 +6,7 @@
         <div class="content">
           <img :src="bg" class="bg" />
           <img src="../assets/p1/logo.png" class="top" />
-          <img src="../assets/p1/dz.png" class="dz" />
+          <img :src="pic" alt class="title" />
           <div class="location">
             <img src="../assets/p13/l.png" alt class="l" />
             <span>{{location}}</span>
@@ -15,15 +15,13 @@
         <div class="user">
           <img :src="currentAvatar" alt class="tx" />
           <p class="user-name">{{name}}</p>
+          <img src="../assets/p13/zt.png" class="dz" />
           <p class="count">
             我是第
             <span>{{rankNum}}</span> 个为
             <span>{{location}}</span> 点赞的人
           </p>
-          <p class="zh">
-            它很燃、很酷、很美！
-            <br />我为ta自豪！
-          </p>
+          <p class="zh">它很燃、很酷、很美！</p>
           <div class="code">
             <img src="../assets/p13/q.png" class="code" />
             <span>扫码为家点赞</span>
@@ -48,6 +46,15 @@ import kz from "../assets/p13/kz.png";
 import lz from "../assets/p13/lz.png";
 import yb from "../assets/p13/yb.png";
 
+import jjs from "../assets/p13/jjs.png";
+import wzs from "../assets/p13/wzs.png";
+import ycs from "../assets/p13/ycs.png";
+import fjs from "../assets/p13/fjs.png";
+import dzs from "../assets/p13/dzs.png";
+import kzs from "../assets/p13/kzs.png";
+import lzs from "../assets/p13/lzs.png";
+import ybs from "../assets/p13/ybs.png";
+
 export default {
   props: {
     name: String,
@@ -59,8 +66,6 @@ export default {
   watch: {
     show(val) {
       if (val) {
-        console.log(234);
-
         this.buildNewImage();
       }
     }
@@ -77,6 +82,16 @@ export default {
         泸州: lz,
         宜宾: yb
       },
+      locationPics: {
+        江津: jjs,
+        万州: wzs,
+        永川: ycs,
+        奉节: fjs,
+        达州: dzs,
+        开州: kzs,
+        泸州: lzs,
+        宜宾: ybs
+      },
       showPic: true,
       buildImage: null
     };
@@ -84,6 +99,9 @@ export default {
   computed: {
     bg() {
       return this.locations[this.location];
+    },
+    pic() {
+      return this.locationPics[this.location];
     }
   },
   methods: {
@@ -96,15 +114,10 @@ export default {
       if (!this.buildImage) {
         console.log("build");
         let that = this;
-        setTimeout(() => {
-          html2canvas(document.querySelector("#share-container"), {
-            useCORS: true,
-            allowTaint: true
-          }).then(canvas => {
-            that.buildImage = canvas.toDataURL("image/png", 1);
-            console.log(that.buildImage);
-          });
-        }, 1000);
+        html2canvas(document.querySelector("#share-container")).then(canvas => {
+          that.buildImage = canvas.toDataURL("image/png", 1);
+          console.log(that.buildImage);
+        });
       }
     }
   },
@@ -182,12 +195,14 @@ export default {
       right: 0;
       margin: auto;
     }
-    .dz {
-      width: 352px;
-      height: 139px;
+    .title {
+      height: 50%;
       position: absolute;
-      left: 6%;
-      bottom: 13.7%;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
     }
     .location {
       position: absolute;
@@ -209,6 +224,12 @@ export default {
     background: #fff;
     position: relative;
     padding-top: 20px;
+    .dz {
+      width: 238px;
+      height: 92px;
+      margin-left: 54px;
+      margin-top: -8px;
+    }
     .code {
       text-align: center;
       width: 150px;
@@ -247,10 +268,10 @@ export default {
     }
     .count {
       font-weight: bold;
-      margin-top: 6vw;
+      margin-top: 10px;
     }
     .zh {
-      margin-top: -2.4vw;
+      margin-top: -30px;
       line-height: 1.5;
     }
     p {

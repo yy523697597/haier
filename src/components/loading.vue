@@ -79,6 +79,24 @@ export default {
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p13/wz.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p13/yb.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p13/yc.png"
+
+        // "../assets/p13/jj.png",
+        // "../assets/p13/wz.png",
+        // "../assets/p13/yc.png",
+        // "../assets/p13/fj.png",
+        // "../assets/p13/dz.png",
+        // "../assets/p13/kz.png",
+        // "../assets/p13/lz.png",
+        // "../assets/p13/yb.png",
+
+        // "../assets/p13/jjs.png",
+        // "../assets/p13/wzs.png",
+        // "../assets/p13/ycs.png",
+        // "../assets/p13/fjs.png",
+        // "../assets/p13/dzs.png",
+        // "../assets/p13/kzs.png",
+        // "../assets/p13/lzs.png",
+        // "../assets/p13/ybs.png"
       ]
     };
   },

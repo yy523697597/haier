@@ -82,7 +82,7 @@ export default {
   .sp {
     background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/sp.png);
     background-size: cover;
-    width: 390px;
+    width: 476px;
     height: 150px;
     margin: 25% auto 3%;
   }

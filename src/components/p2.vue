@@ -63,7 +63,7 @@ export default {
     background-size: cover;
     width: 638px;
     height: 980px;
-    margin: 5% auto 0;
+    margin: 2% auto 0;
     position: relative;
     animation-delay: 1s;
     div {
