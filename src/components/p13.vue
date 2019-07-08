@@ -21,7 +21,7 @@
             <span>{{rankNum}}</span> 个为
             <span>{{location}}</span> 点赞的人
           </p>
-          <p class="zh">它很燃、很酷、很美！</p>
+          <p class="zh">{{wish}}</p>
           <div class="code">
             <img src="../assets/p13/q.png" class="code" />
             <span>扫码为家点赞</span>
@@ -61,7 +61,8 @@ export default {
     location: String,
     rankNum: [String, Number],
     currentAvatar: String,
-    show: Boolean
+    show: Boolean,
+    wish: String
   },
   watch: {
     show(val) {
@@ -273,6 +274,10 @@ export default {
     .zh {
       margin-top: -30px;
       line-height: 1.5;
+      width: 480px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     p {
       margin-left: 54px;

@@ -29,6 +29,7 @@
           :name="name"
           :currentAvatar="currentAvatar"
           :show="p13show"
+          :wish="wish"
         ></page-threen>
       </full-page>
     </transition>
@@ -101,7 +102,8 @@ export default {
       city: null,
       currentAvatar: BaseAvatar,
       rankNum: 1,
-      name: "小鱼儿"
+      name: "小鱼儿",
+      wish: "ta 很燃、很酷"
     };
   },
   methods: {

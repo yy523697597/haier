@@ -11,7 +11,7 @@
         alt
         class="zt"
       />
-      <input type="text" placeholder="输入姓名，让家的美被更多人看见" class="sr" v-model="name" @blur="inputBlur" />
+      <input type="text" placeholder="请输入你对家的祝福" class="sr" v-model="wish" @blur="inputBlur" />
       <div class="tj" @click="submit"></div>
     </div>
   </transition>
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      name: null
+      wish: null
     };
   },
   methods: {
@@ -40,15 +40,15 @@ export default {
       }, 100);
     },
     async submit() {
-      if (this.name) {
-        let name = this.name.trim();
-        if (name.length > 0) {
+      if (this.wish) {
+        let wish = this.wish.trim();
+        if (wish.length > 0) {
           ``;
           let res = await axios.post(
             "https://projects.godruoyi.com/haier/submit",
             {
               city: this.city,
-              username: this.name
+              username: this.wish
             }
           );
 
@@ -56,14 +56,14 @@ export default {
           console.log("submit", res);
           if (res.code == 0) {
             this.$parent.$parent.rankNum = res.data.total;
-            this.$parent.$parent.name = this.name;
+            this.$parent.$parent.wish = this.wish;
             this.$emit("move-to", 12);
           }
         } else {
-          this.$toast.center("请输入您的名字~");
+          this.$toast.center("请输入您的祝福~");
         }
       } else {
-        this.$toast.center("请输入您的名字~");
+        this.$toast.center("请输入您的祝福~");
       }
     }
   },
