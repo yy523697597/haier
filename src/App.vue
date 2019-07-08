@@ -4,7 +4,7 @@
     <v-audio :source="music" :autoPlay="true" v-show="show"></v-audio>
     <transition name="fade">
       <full-page ref="fullpage" :options="options" id="fullpage" v-show="show">
-        <!-- <page-one @jz="moveSectionDown" :show="show"></page-one>
+        <page-one @jz="moveSectionDown" :show="show"></page-one>
         <page-two :show="p2show" @home-click="moveTo"></page-two>
         <page-three @move-to="star" :show="p3show"></page-three>
         <page-four @move-to="star" :show="p4show"></page-four>
@@ -14,7 +14,7 @@
         <page-eight @move-to="star" :show="p8show"></page-eight>
         <page-nine @move-to="star" :show="p9show"></page-nine>
         <page-ten @move-to="star" :show="p10show"></page-ten>
-        <page-eleven @move-to="moveTo" :city="city"></page-eleven>-->
+        <page-eleven @move-to="moveTo" :city="city"></page-eleven>
         <page-twelve
           :location="location"
           :currentAvatar="currentAvatar"
