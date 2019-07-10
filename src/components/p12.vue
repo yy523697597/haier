@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="section p12">
       <img
-        src="https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p1/dz.png"
+        src="https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/dz2.png"
         class="zt"
       />
       <img :src=" currentAvatar" class="tx" />
@@ -14,10 +14,12 @@
       </p>
       <p>快快邀请小伙伴们一起</p>
       <p>见证家的高光时刻</p>
-      <div class="sp" @click="moveTo"></div>
+      <div class="sp" @click="moveTo(13)"></div>
+      <div class="kk" @click="moveTo(2)"></div>
+
       <p class="fx">
         分享专属海报，集赞58个
-        <br />截图给海尔重庆公众号（haier-chognqing）
+        <br />截图给海尔重庆公众号（haier-chongqing）
         <br />将获得品牌神秘礼品
       </p>
     </div>
@@ -35,8 +37,8 @@ export default {
     return {};
   },
   methods: {
-    moveTo() {
-      this.$emit("move-to", 13);
+    moveTo(index) {
+      this.$emit("move-to", index);
     }
   },
   created() {}
@@ -45,7 +47,7 @@ export default {
 
 <style  lang="less" scoped>
 .p12 {
-  background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/bg.png);
+  background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/bg1.png);
   .zt {
     width: 380px;
     height: 150px;
@@ -84,7 +86,14 @@ export default {
     background-size: cover;
     width: 476px;
     height: 150px;
-    margin: 25% auto 3%;
+    margin: 4% auto 0;
+  }
+  .kk {
+    background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/kk.png);
+    background-size: cover;
+    width: 298px;
+    height: 92px;
+    margin: 4% auto 3%;
   }
   .fx {
     color: #ffffff;
