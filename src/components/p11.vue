@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="section p11" ref="page">
       <img
-        src="https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/j.png"
+        src="https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/j2.png"
         alt
         class="j"
       />
@@ -74,7 +74,7 @@ export default {
 
 <style  lang="less" scoped>
 .p11 {
-  background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/bg.png);
+  background-image: url(https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/bg2.png);
   .j {
     width: 456px;
     height: 428px;

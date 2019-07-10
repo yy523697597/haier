@@ -60,13 +60,13 @@ export default {
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p10/bg.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p10/gz.png",
 
-        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/bg.png",
-        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/j.png",
+        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/bg2.png",
+        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/j2.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/tj.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p11/zt.png",
 
-        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/bg.png",
-        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/sp.png",
+        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/bg1.png",
+        "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/hb.png",
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p12/tx.png",
 
         "https://gblog-images-1254032478.cos.ap-chengdu.myqcloud.com/haier/assets/p13/dz.png",
